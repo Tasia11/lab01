@@ -6,9 +6,9 @@
 
 ## Tasks
 
-- [x ] 1. Ознакомиться со ссылками учебного материала
-- [ x] 2. Выполнить инструкцию учебного материала
-- [x ] 3. Составить отчет и отправить ссылку личным сообщением в **Slack**
+- [x] 1. Ознакомиться со ссылками учебного материала
+- [x] 2. Выполнить инструкцию учебного материала
+- [x] 3. Составить отчет и отправить ссылку личным сообщением в **Slack**
 
 ## Tutorial
 
@@ -131,7 +131,7 @@ $ gist REPORT.md
 ## Homework
 
 1. Скачайте библиотеку *boost* с помощью утилиты **wget**. Адрес для скачивания `https://sourceforge.net/projects/boost/files/boost/1.69.0/boost_1_69_0.tar.gz`.
-
+```
 $ wget https://sourceforge.net/projects/boost/files/boost/1.69.0/boost_1_69_0.tar.gz
 --2020-06-05 00:58:15--  https://sourceforge.net/projects/boost/files/boost/1.69.0/boost_1_69_0.tar.gz
 ...
@@ -140,23 +140,23 @@ $ wget https://sourceforge.net/projects/boost/files/boost/1.69.0/boost_1_69_0.ta
 boost_1_69_0. 100% 106,53M  1,61MB/s    за 59s        
 
 2020-06-05 00:59:20 (1,80 MB/s) - «boost_1_69_0.tar.gz» сохранён [111710205/111710205]
-
+```
 2. Разархивируйте скаченный файл в директорию `~/boost_1_69_0`
-
+```
 $ tar -xf boost_1_69_0.tar.gz
-
+```
 3. Подсчитайте количество файлов в директории `~/boost_1_69_0` **не включая** вложенные директории.
-
+```
 $ ls boost_1_69_0 -f | wc -l
 20
-
+```
 4. Подсчитайте количество файлов в директории `~/boost_1_69_0` **включая** вложенные директории.
-
+```
 $ find boost_1_69_0/ -type f | wc -l
 61191
-
+```
 5. Подсчитайте количество заголовочных файлов, файлов с расширением `.cpp`, сколько остальных файлов (не заголовочных и не `.cpp`).
-
+```
 $ find boost_1_69_0/ -type f -name '*.h' | wc -l
 296
 $ find boost_1_69_0/ -type f -name '*.cpp' | wc -l
@@ -164,9 +164,9 @@ $ find boost_1_69_0/ -type f -name '*.cpp' | wc -l
 $ find boost_1_69_0/ -type f -not  -name '*.cpp' -a -not -name '*.h' | wc -l 
 47121
 
-
+```
 6. Найдите полный пусть до файла `any.hpp` внутри библиотеки *boost*.
-
+```
 $ find boost_1_69_0/ -name 'any.hpp'
 boost_1_69_0/boost/any.hpp
 boost_1_69_0/boost/fusion/algorithm/query/detail/any.hpp
@@ -178,8 +178,9 @@ boost_1_69_0/boost/hana/any.hpp
 boost_1_69_0/boost/hana/fwd/any.hpp
 boost_1_69_0/boost/spirit/home/support/algorithm/any.hpp
 boost_1_69_0/boost/type_erasure/any.hpp
-
+```
 7. Выведите в консоль все файлы, где упоминается последовательность `boost::asio '.
+```
 $ grep -l -r "boost::asio" boost_1_69_0/
 boost_1_69_0/boost/asio/local/stream_protocol.hpp
 boost_1_69_0/boost/asio/local/detail/endpoint.hpp
@@ -187,11 +188,9 @@ boost_1_69_0/boost/asio/local/detail/endpoint.hpp
 boost_1_69_0/libs/coroutine/doc/coro.qbk
 boost_1_69_0/libs/coroutine/doc/motivation.qbk
 boost_1_69_0/libs/coroutine/doc/html/coroutine/motivation.html
-
-
-
+```
 8. Скомпилирутйе *boost*. Можно воспользоваться [инструкцией](https://www.boost.org/doc/libs/1_61_0/more/getting_started/unix-variants.html#or-build-custom-binaries) или [ссылкой](https://codeyarns.com/2017/01/24/how-to-build-boost-on-linux/).
-
+```
 $ cd boost_1_69_0
 $ ./bootstrap.sh
 $ ./bootstrap.sh
@@ -214,20 +213,20 @@ Further information:
      
    - Boost.Build documentation:
      http://www.boost.org/build/doc/html/index.html
-
+```
 9. Перенесите все скомпилированные на предыдущем шаге статические библиотеки в директорию `~/boost-libs`.
-
+```
 $ mv boost_1_69_0/=boost_output/lib/ boost-libs/
-
+```
 10. Подсчитайте сколько занимает дискового пространства каждый файл в этой директории.
-
+```
 $ find . type -f -exec du -h {} +
 100K ./libboost_stacktrace_basic.a
 ...
 24K	./boostcpp.jam
-
+```
 11. Найдите *топ10* самых "тяжёлых".
-
+```
 $ find . type -f -exec du -h {} + | sort -rn | head
 ./libboost_log-vc141-mt-gd-x32-1_70.lib
 ./libboost_log-vc141-mt-gd-x64-1_70.lib
@@ -239,6 +238,7 @@ $ find . type -f -exec du -h {} + | sort -rn | head
 ./libboost_unit_test_framework-vc141-mt-gd-x64-1_70.lib
 ./libboost_wave-vc141-mt-gd-x32-1_70.lib
 ./libboost_wave-vc141-mt-gd-x64-1_70.lib
+```
 ```
 Copyright (c) 2015-2020 The ISC Authors
 ```
